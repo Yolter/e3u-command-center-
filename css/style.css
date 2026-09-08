@@ -1,189 +1,255 @@
-
-/* E3U Command Center */
-/* Inspired by The Grand Mafia */
-
-:root{
-  --gold:#D4AF37;
-  --gold-dark:#B8860B;
-  --bg:#050505;
-  --panel:#101010;
-  --panel-2:#171717;
-  --border:rgba(212,175,55,.35);
-  --text:#ffffff;
-  --muted:#b8b8b8;
-  --danger:#d64545;
-  --success:#2ecc71;
-}
+/* ==========================
+   E3U Command Center v2
+   The Grand Mafia Style
+========================== */
 
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:"Segoe UI",Arial,sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;
 }
 
 body{
-  background:
-  radial-gradient(circle at top,#1a1a1a 0%,#090909 35%,#050505 100%);
-  color:var(--text);
-  min-height:100vh;
+
+background:#040404;
+color:white;
+min-height:100vh;
+overflow-x:hidden;
+position:relative;
+
 }
 
-/* Верхняя панель */
+.background-glow{
 
-.header{
-  padding:28px;
-  text-align:center;
-  border-bottom:1px solid var(--border);
-  background:linear-gradient(180deg,#161616,#0b0b0b);
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at top,#D4AF37 0%,transparent 25%),
+radial-gradient(circle at bottom,#6e5208 0%,transparent 35%);
+opacity:.15;
+pointer-events:none;
+z-index:-1;
+
 }
-
-.header h1{
-  color:var(--gold);
-  font-size:40px;
-  letter-spacing:2px;
-}
-
-.header p{
-  color:var(--muted);
-  margin-top:8px;
-}
-
-/* Контейнер */
 
 .container{
-  width:100%;
-  max-width:1200px;
-  margin:auto;
-  padding:25px;
+
+max-width:430px;
+margin:auto;
+padding:40px 20px;
+
 }
 
-/* Панели */
+.logo{
+
+text-align:center;
+margin-bottom:30px;
+animation:fadeDown .8s ease;
+
+}
+
+.logo-img{
+
+width:90px;
+margin-bottom:10px;
+filter:drop-shadow(0 0 15px rgba(212,175,55,.6));
+
+}
+
+.logo h1{
+
+font-size:42px;
+color:#D4AF37;
+letter-spacing:4px;
+
+}
+
+.logo p{
+
+color:#aaa;
+margin-top:5px;
+
+}
+
+.badge{
+
+display:inline-block;
+margin-top:12px;
+padding:7px 16px;
+border:1px solid #8b6b00;
+border-radius:30px;
+color:#D4AF37;
+font-size:13px;
+background:rgba(212,175,55,.08);
+
+}
 
 .panel{
-  background:linear-gradient(180deg,#141414,#101010);
-  border:1px solid var(--border);
-  border-radius:20px;
-  padding:22px;
-  box-shadow:
-  0 0 25px rgba(212,175,55,.08),
-  inset 0 0 15px rgba(255,255,255,.02);
+
+background:rgba(18,18,18,.88);
+border:1px solid rgba(212,175,55,.25);
+border-radius:24px;
+padding:28px;
+backdrop-filter:blur(12px);
+box-shadow:
+0 0 35px rgba(212,175,55,.08),
+inset 0 0 20px rgba(255,215,0,.03);
+animation:fadeUp .9s ease;
+
 }
 
-/* Кнопки */
+.title{
+
+text-align:center;
+margin-bottom:25px;
+
+}
+
+.title h2{
+
+color:#D4AF37;
+margin-bottom:8px;
+
+}
+
+.title p{
+
+color:#aaa;
+font-size:14px;
+
+}
 
 .btn{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  text-decoration:none;
-  color:#111;
-  background:linear-gradient(180deg,var(--gold),var(--gold-dark));
-  padding:15px 18px;
-  border-radius:14px;
-  font-weight:700;
-  transition:.25s;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:17px 18px;
+margin-bottom:14px;
+text-decoration:none;
+color:white;
+font-weight:600;
+border-radius:16px;
+background:linear-gradient(90deg,#c69c21,#D4AF37);
+transition:.25s;
+box-shadow:0 6px 18px rgba(212,175,55,.2);
+
 }
 
 .btn:hover{
-  transform:translateY(-3px);
-  box-shadow:0 8px 18px rgba(212,175,55,.25);
+
+transform:translateY(-3px) scale(1.02);
+box-shadow:0 0 30px rgba(212,175,55,.4);
+
 }
 
-/* Карточки */
+.status{
 
-.grid{
-  display:grid;
-  gap:18px;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+margin-top:25px;
+padding:18px;
+background:#111;
+border-radius:18px;
+border:1px solid rgba(212,175,55,.18);
+
 }
 
-.card{
-  background:linear-gradient(180deg,#171717,#111);
-  border:1px solid var(--border);
-  border-radius:18px;
-  padding:20px;
+.status h3{
+
+color:#D4AF37;
+margin-bottom:12px;
+
 }
 
-.card h3{
-  color:var(--gold);
-  margin-bottom:10px;
+.status li{
+
+list-style:none;
+padding:7px 0;
+color:#ddd;
+
 }
 
-.card p{
-  color:var(--muted);
+.footer{
+
+margin-top:30px;
+text-align:center;
+font-size:13px;
+color:#777;
+
 }
 
-/* Статусы */
+/* Музыка */
 
-.status-online{color:var(--success);}
-.status-offline{color:var(--danger);}
+.music-btn{
 
-/* Поля */
+position:fixed;
+top:20px;
+right:20px;
+width:52px;
+height:52px;
+display:flex;
+justify-content:center;
+align-items:center;
+border-radius:50%;
+background:rgba(212,175,55,.12);
+border:1px solid rgba(212,175,55,.35);
+cursor:pointer;
+font-size:22px;
+backdrop-filter:blur(8px);
+transition:.25s;
+z-index:999;
 
-input,select{
-  width:100%;
-  background:#1b1b1b;
-  border:1px solid #333;
-  border-radius:12px;
-  padding:13px;
-  color:white;
-  margin-top:8px;
 }
 
-input:focus,
-select:focus{
-  outline:none;
-  border-color:var(--gold);
+.music-btn:hover{
+
+transform:scale(1.1) rotate(8deg);
+background:rgba(212,175,55,.22);
+
 }
 
-/* Таблицы */
+/* Анимации */
 
-table{
-  width:100%;
-  border-collapse:collapse;
+@keyframes fadeDown{
+
+from{
+opacity:0;
+transform:translateY(-25px);
 }
 
-th{
-  color:var(--gold);
-  text-align:left;
-  padding:12px;
+to{
+opacity:1;
+transform:translateY(0);
 }
 
-td{
-  padding:12px;
-  border-top:1px solid rgba(255,255,255,.06);
 }
 
-/* Анимация свечения */
+@keyframes fadeUp{
 
-.glow{
-  animation:glow 2.5s infinite alternate;
+from{
+opacity:0;
+transform:translateY(35px);
 }
 
-@keyframes glow{
-  from{
-    text-shadow:0 0 5px rgba(212,175,55,.3);
-  }
-  to{
-    text-shadow:0 0 16px rgba(212,175,55,.8);
-  }
+to{
+opacity:1;
+transform:translateY(0);
 }
 
-/* Мобильная адаптация */
+}
 
-@media(max-width:768px){
+@media(max-width:430px){
 
 .container{
-padding:15px;
+
+padding:25px 15px;
+
 }
 
-.header h1{
-font-size:30px;
-}
+.logo h1{
 
-.btn{
-padding:14px;
+font-size:36px;
+
 }
 
 }
