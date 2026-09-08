@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E3U Command Center</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
+body{background:#080808;color:#fff;}
+header{padding:35px;text-align:center;border-bottom:2px solid #d4af37;}
+header h1{color:#d4af37;font-size:42px;}
+header p{color:#bbb;margin-top:10px;}
+
+nav{
+display:flex;
+justify-content:center;
+gap:15px;
+padding:20px;
+flex-wrap:wrap;
+}
+
+nav a{
+text-decoration:none;
+color:#d4af37;
+padding:10px 18px;
+border:1px solid #d4af37;
+border-radius:12px;
+transition:.3s;
+}
+
+nav a:hover{
+background:#d4af37;
+color:black;
+}
+
+.hero{
+padding:70px 20px;
+text-align:center;
+}
+
+.hero h2{
+font-size:36px;
+color:#d4af37;
+margin-bottom:20px;
+}
+
+.hero p{
+max-width:700px;
+margin:auto;
+line-height:1.6;
+color:#ddd;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:20px;
+padding:40px;
+}
+
+.card{
+background:#121212;
+border:1px solid #d4af37;
+border-radius:18px;
+padding:25px;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+}
+
+.card h3{
+color:#d4af37;
+margin-bottom:12px;
+}
+
+footer{
+text-align:center;
+padding:30px;
+border-top:1px solid #333;
+color:#888;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>E3U Command Center</h1>
+<p>Официальный штаб клана The Grand Mafia</p>
+</header>
+
+<nav>
+<a href="#">Главная</a>
+<a href="#">Академия</a>
+<a href="#">R4</a>
+<a href="#">События</a>
+<a href="#">Штаб</a>
+</nav>
+
+<section class="hero">
+<h2>Добро пожаловать</h2>
+<p>
+Это внутренняя система управления кланом E3U.
+Здесь будут обязанности R4, академия новичков,
+битва за губернатора, битва городов и офицерская аттестация.
+</p>
+</section>
+
+<section class="grid">
+
+<div class="card">
+<h3>👑 Битва за губернатора</h3>
+<p>Подготовка и координация.</p>
+</div>
+
+<div class="card">
+<h3>🌍 Битва городов</h3>
+<p>Планы участия клана.</p>
+</div>
+
+<div class="card">
+<h3>🚚 Грузовик</h3>
+<p>Ответственный: Максим.</p>
+</div>
+
+<div class="card">
+<h3>💰 Банк</h3>
+<p>Ответственный: Дима.</p>
+</div>
+
+<div class="card">
+<h3>🎓 Академия новичков</h3>
+<p>Гайды и помощь игрокам.</p>
+</div>
+
+<div class="card">
+<h3>⚔️ Аттестация R4</h3>
+<p>Скоро откроется.</p>
+</div>
+
+</section>
+
+<footer>
+E3U Command Center • The Grand Mafia
+</footer>
+
+</body>
+</html>
