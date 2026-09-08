@@ -1,189 +1,86 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>E3U Command Center</title>
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Segoe UI,Arial,sans-serif;
-}
-
-body{
-background:radial-gradient(circle at top,#141414,#050505);
-color:white;
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-padding:20px;
-}
-
-.container{
-width:100%;
-max-width:430px;
-}
-
-.logo{
-text-align:center;
-margin-bottom:30px;
-}
-
-.logo h1{
-font-size:44px;
-color:#D4AF37;
-letter-spacing:2px;
-}
-
-.logo p{
-color:#bbb;
-margin-top:6px;
-}
-
-.badge{
-display:inline-block;
-margin-top:12px;
-padding:6px 14px;
-border:1px solid #D4AF37;
-border-radius:999px;
-color:#D4AF37;
-font-size:12px;
-}
-
-.panel{
-background:#111;
-border:1px solid rgba(212,175,55,.35);
-border-radius:22px;
-padding:28px;
-box-shadow:0 0 35px rgba(212,175,55,.08);
-}
-
-.title{
-text-align:center;
-margin-bottom:25px;
-}
-
-.title h2{
-color:#D4AF37;
-margin-bottom:8px;
-}
-
-.title p{
-color:#aaa;
-font-size:14px;
-}
-
-.btn{
-display:flex;
-justify-content:space-between;
-align-items:center;
-background:linear-gradient(180deg,#D4AF37,#B8860B);
-padding:16px 18px;
-border-radius:14px;
-text-decoration:none;
-font-weight:bold;
-color:#111;
-margin-bottom:14px;
-transition:.25s;
-}
-
-.btn:hover{
-transform:translateY(-3px);
-box-shadow:0 8px 20px rgba(212,175,55,.25);
-}
-
-.status{
-margin-top:25px;
-background:#181818;
-border:1px solid #2f2f2f;
-border-radius:16px;
-padding:18px;
-}
-
-.status h3{
-color:#D4AF37;
-margin-bottom:12px;
-font-size:16px;
-}
-
-.status ul{
-list-style:none;
-}
-
-.status li{
-padding:7px 0;
-color:#ddd;
-}
-
-.footer{
-margin-top:25px;
-text-align:center;
-font-size:13px;
-color:#777;
-}
-</style>
+<link rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body>
 
+<audio id="bgMusic" loop>
+    <source src="assets/audio/soundtrack.mp3" type="audio/mpeg">
+</audio>
+
+<div class="music-btn" onclick="toggleMusic()">
+    🎵
+</div>
+
+<div class="background-glow"></div>
+
 <div class="container">
 
-<div class="logo">
-    <img src="assets/images/logo.png" alt="E3U Logo" class="logo-img">
+    <div class="logo">
 
-    <p>Command Center</p>
+        <img src="assets/images/logo.png" alt="E3U Logo" class="logo-img">
 
-    <div class="badge">The Grand Mafia</div>
+        <h1>E3U</h1>
+        <p>Command Center</p>
+
+        <div class="badge">
+            The Grand Mafia
+        </div>
+
+    </div>
+
+    <div class="panel">
+
+        <div class="title">
+            <h2>Добро пожаловать</h2>
+            <p>Внутренний штаб клана E3U</p>
+        </div>
+
+        <a class="btn" href="player.html">
+            <span>🎮 Игрок</span>
+            <span>→</span>
+        </a>
+
+        <a class="btn" href="officer-test.html">
+            <span>🛡 R4 Аттестация</span>
+            <span>→</span>
+        </a>
+
+        <a class="btn" href="r5.html">
+            <span>👑 Кабинет R5</span>
+            <span>→</span>
+        </a>
+
+        <div class="status">
+
+            <h3>Боевой статус</h3>
+
+            <ul>
+                <li>🟡 BG — ожидание</li>
+                <li>🌍 Битва городов — скоро</li>
+                <li>🚛 Грузовик — активен</li>
+                <li>💰 Банк — под контролем</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <div class="footer">
+        E3U Command Center • v2.0
+    </div>
+
 </div>
 
-<div class="panel">
-
-<div class="title">
-<h2>Добро пожаловать</h2>
-<p>Внутренний штаб клана E3U</p>
-</div>
-
-<a class="btn" href="player.html">
-<span>🎓 Игрок</span>
-<span>→</span>
-</a>
-
-<a class="btn" href="officer-test.html">
-<span>🛡️ R4</span>
-<span>→</span>
-</a>
-
-<a class="btn" href="r5.html">
-<span>👑 R5</span>
-<span>→</span>
-</a>
-
-<div class="status">
-
-<h3>Боевой статус</h3>
-
-<ul>
-<li>🟡 BG — ожидание</li>
-<li>🌍 Битва городов — скоро</li>
-<li>🚚 Грузовик — активен</li>
-<li>💰 Банк — под контролем</li>
-</ul>
-
-</div>
-
-</div>
-
-<div class="footer">
-E3U Command Center • v1.1
-</div>
-
-</div>
+<script src="js/app.js"></script>
 
 </body>
 </html>
