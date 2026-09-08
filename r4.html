@@ -1,112 +1,63 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>R4 — E3U Command Center</title>
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,Arial,sans-serif;}
-
-body{
-background:#070707;
-color:white;
-padding:20px;
-}
-
-header{
-text-align:center;
-margin-bottom:30px;
-}
-
-header h1{
-color:#D4AF37;
-font-size:36px;
-}
-
-header p{
-color:#aaa;
-margin-top:8px;
-}
-
-.back{
-display:inline-block;
-margin-bottom:20px;
-color:#D4AF37;
-text-decoration:none;
-font-weight:bold;
-}
-
-.card{
-background:#111;
-border:1px solid rgba(212,175,55,.35);
-border-radius:18px;
-padding:20px;
-margin-bottom:15px;
-}
-
-.card h3{
-color:#D4AF37;
-margin-bottom:10px;
-}
-
-.test{
-margin-top:30px;
-background:#161616;
-border:1px dashed #D4AF37;
-border-radius:18px;
-padding:20px;
-text-align:center;
-}
-
-button{
-margin-top:15px;
-background:#D4AF37;
-color:black;
-border:none;
-padding:14px 20px;
-border-radius:12px;
-font-weight:bold;
-cursor:pointer;
-}
-</style>
+<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-<a href="index.html" class="back">← Назад</a>
+<div class="background-glow"></div>
 
-<header>
-<h1>Панель R4</h1>
-<p>Офицерский состав E3U</p>
-</header>
+<div class="container">
 
-<div class="card">
-<h3>💰 Дима</h3>
-<p>Отвечает за банк клана.</p>
+    <a href="index.html" class="back">← Назад</a>
+
+    <header class="logo">
+
+        <img src="assets/images/logo.png" alt="E3U Logo" class="logo-img">
+
+        <h1>Панель R4</h1>
+        <p>Офицерский состав E3U</p>
+
+    </header>
+
+    <div class="card">
+        <h3>💰 Дима</h3>
+        <p>Отвечает за банк клана.</p>
+    </div>
+
+    <div class="card">
+        <h3>🚚 Максим</h3>
+        <p>Отвечает за грузовики и распределение игроков.</p>
+    </div>
+
+    <div class="card">
+        <h3>👑 BG</h3>
+        <p>Координатор пока не назначен.</p>
+    </div>
+
+    <div class="card">
+        <h3>🌍 Битва городов</h3>
+        <p>Координатор пока не назначен.</p>
+    </div>
+
+    <div class="panel" style="margin-top:30px;text-align:center;border-style:dashed;">
+        <h3>⚔ Офицерская комиссия</h3>
+        <p>Следующим этапом здесь появится полноценная аттестация R4.</p>
+
+        <button class="btn" disabled style="opacity:.8;cursor:not-allowed;">
+            Скоро доступно
+        </button>
+    </div>
+
 </div>
 
-<div class="card">
-<h3>🚚 Максим</h3>
-<p>Отвечает за грузовик и распределение игроков.</p>
-</div>
-
-<div class="card">
-<h3>👑 BG</h3>
-<p>Координатор пока не назначен.</p>
-</div>
-
-<div class="card">
-<h3>🌍 Битва городов</h3>
-<p>Координатор пока не назначен.</p>
-</div>
-
-<div class="test">
-<h3>⚔️ Офицерская комиссия</h3>
-<p>Следующим этапом здесь появится аттестация R4.</p>
-<button>Скоро доступно</button>
-</div>
+<script src="js/app.js"></script>
 
 </body>
 </html>
