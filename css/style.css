@@ -253,3 +253,50 @@ font-size:36px;
 }
 
 }
+/* ===== Hero Upgrade ===== */
+
+.logo-frame{
+    width:120px;
+    height:120px;
+    margin:auto;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:radial-gradient(circle,#3d2b00,#0b0b0b);
+    border:2px solid rgba(212,175,55,.45);
+    box-shadow:
+        0 0 35px rgba(212,175,55,.35),
+        inset 0 0 25px rgba(255,215,0,.08);
+}
+
+.hero-line{
+    width:140px;
+    height:2px;
+    margin:18px auto;
+    background:linear-gradient(to right,
+        transparent,
+        #D4AF37,
+        transparent);
+}
+
+.hero-text{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    font-size:13px;
+    color:#cfcfcf;
+}
+
+.hero-text span{
+    animation:pulseText 3s infinite;
+}
+
+@keyframes pulseText{
+    0%,100%{
+        opacity:.75;
+    }
+    50%{
+        opacity:1;
+    }
+}
