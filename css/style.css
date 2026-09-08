@@ -1,0 +1,189 @@
+
+/* E3U Command Center */
+/* Inspired by The Grand Mafia */
+
+:root{
+  --gold:#D4AF37;
+  --gold-dark:#B8860B;
+  --bg:#050505;
+  --panel:#101010;
+  --panel-2:#171717;
+  --border:rgba(212,175,55,.35);
+  --text:#ffffff;
+  --muted:#b8b8b8;
+  --danger:#d64545;
+  --success:#2ecc71;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Segoe UI",Arial,sans-serif;
+}
+
+body{
+  background:
+  radial-gradient(circle at top,#1a1a1a 0%,#090909 35%,#050505 100%);
+  color:var(--text);
+  min-height:100vh;
+}
+
+/* Верхняя панель */
+
+.header{
+  padding:28px;
+  text-align:center;
+  border-bottom:1px solid var(--border);
+  background:linear-gradient(180deg,#161616,#0b0b0b);
+}
+
+.header h1{
+  color:var(--gold);
+  font-size:40px;
+  letter-spacing:2px;
+}
+
+.header p{
+  color:var(--muted);
+  margin-top:8px;
+}
+
+/* Контейнер */
+
+.container{
+  width:100%;
+  max-width:1200px;
+  margin:auto;
+  padding:25px;
+}
+
+/* Панели */
+
+.panel{
+  background:linear-gradient(180deg,#141414,#101010);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:22px;
+  box-shadow:
+  0 0 25px rgba(212,175,55,.08),
+  inset 0 0 15px rgba(255,255,255,.02);
+}
+
+/* Кнопки */
+
+.btn{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  text-decoration:none;
+  color:#111;
+  background:linear-gradient(180deg,var(--gold),var(--gold-dark));
+  padding:15px 18px;
+  border-radius:14px;
+  font-weight:700;
+  transition:.25s;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 8px 18px rgba(212,175,55,.25);
+}
+
+/* Карточки */
+
+.grid{
+  display:grid;
+  gap:18px;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+}
+
+.card{
+  background:linear-gradient(180deg,#171717,#111);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:20px;
+}
+
+.card h3{
+  color:var(--gold);
+  margin-bottom:10px;
+}
+
+.card p{
+  color:var(--muted);
+}
+
+/* Статусы */
+
+.status-online{color:var(--success);}
+.status-offline{color:var(--danger);}
+
+/* Поля */
+
+input,select{
+  width:100%;
+  background:#1b1b1b;
+  border:1px solid #333;
+  border-radius:12px;
+  padding:13px;
+  color:white;
+  margin-top:8px;
+}
+
+input:focus,
+select:focus{
+  outline:none;
+  border-color:var(--gold);
+}
+
+/* Таблицы */
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+th{
+  color:var(--gold);
+  text-align:left;
+  padding:12px;
+}
+
+td{
+  padding:12px;
+  border-top:1px solid rgba(255,255,255,.06);
+}
+
+/* Анимация свечения */
+
+.glow{
+  animation:glow 2.5s infinite alternate;
+}
+
+@keyframes glow{
+  from{
+    text-shadow:0 0 5px rgba(212,175,55,.3);
+  }
+  to{
+    text-shadow:0 0 16px rgba(212,175,55,.8);
+  }
+}
+
+/* Мобильная адаптация */
+
+@media(max-width:768px){
+
+.container{
+padding:15px;
+}
+
+.header h1{
+font-size:30px;
+}
+
+.btn{
+padding:14px;
+}
+
+}
