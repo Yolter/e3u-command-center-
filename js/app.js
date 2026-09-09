@@ -1,85 +1,72 @@
-const languages = ["ru","en","es","ua"];
-let currentLang = localStorage.getItem("e3u-lang") || "ru";
+// =======================================
+// E3U OS Core v1.0
+// =======================================
 
-const text = {
-  ru:{
-    welcome:"Добро пожаловать.",
-    subtitle:"Операционный центр семьи E3U.",
-    home:"🏠 Главная",
-    operations:"📅 Операции",
-    roster:"👥 Состав",
-    forum:"💬 Форум",
-    settings:"⚙ Настройки"
-  },
+const DEFAULT_ROLE="player";
 
-  en:{
-    welcome:"Welcome.",
-    subtitle:"E3U Operational Center.",
-    home:"🏠 Home",
-    operations:"📅 Operations",
-    roster:"👥 Members",
-    forum:"💬 Forum",
-    settings:"⚙ Settings"
-  },
-
-  es:{
-    welcome:"Bienvenido.",
-    subtitle:"Centro operativo de E3U.",
-    home:"🏠 Inicio",
-    operations:"📅 Operaciones",
-    roster:"👥 Miembros",
-    forum:"💬 Foro",
-    settings:"⚙ Ajustes"
-  },
-
-  ua:{
-    welcome:"Ласкаво просимо.",
-    subtitle:"Операційний центр E3U.",
-    home:"🏠 Головна",
-    operations:"📅 Операції",
-    roster:"👥 Склад",
-    forum:"💬 Форум",
-    settings:"⚙ Налаштування"
-  }
+const ROLE_NAMES={
+    player:"Игрок",
+    warrior:"Воин",
+    r4:"R4",
+    r5:"R5",
+    lr5:"LR5"
 };
 
-function applyLanguage(lang){
+function getPlayerData(){
 
-  currentLang=lang;
+    const saved=localStorage.getItem("e3u-player");
 
-  localStorage.setItem("e3u-lang",lang);
+    if(!saved) return null;
 
-  document.documentElement.lang=lang;
+    return JSON.parse(saved);
 
-  const t=text[lang];
-
-  document.getElementById("welcome").textContent=t.welcome;
-  document.getElementById("subtitle").textContent=t.subtitle;
-
-  document.getElementById("menu-home").textContent=t.home;
-  document.getElementById("menu-operations").textContent=t.operations;
-  document.getElementById("menu-roster").textContent=t.roster;
-  document.getElementById("menu-forum").textContent=t.forum;
-  document.getElementById("menu-settings").textContent=t.settings;
-
-  document.getElementById("langBtn").textContent=
-    lang==="ru"?"🇷🇺":
-    lang==="en"?"🇬🇧":
-    lang==="es"?"🇪🇸":"🇺🇦";
 }
 
-document.addEventListener("DOMContentLoaded",()=>{
+function getRole(){
 
-  applyLanguage(currentLang);
+    const player=getPlayerData();
 
-  document.getElementById("langBtn").onclick=()=>{
+    if(!player) return DEFAULT_ROLE;
 
-    let i=languages.indexOf(currentLang);
+    if(player.rank==="LR5") return "lr5";
+    if(player.rank==="R5") return "r5";
+    if(player.rank==="R4") return "r4";
+    if(player.warrior) return "warrior";
 
-    i=(i+1)%languages.length;
+    return "player";
 
-    applyLanguage(languages[i]);
+}
 
-  };
+function updateTopProfile(){
+
+    const player=getPlayerData();
+
+    if(!player) return;
+
+    const top=document.getElementById("topName");
+
+    if(top) top.textContent=player.nickname;
+
+}
+
+function applyPermissions(){
+
+    const role=getRole();
+
+    document.querySelectorAll("[data-role]").forEach(el=>{
+
+        const allow=el.dataset.role.split(",");
+
+        el.style.display=allow.includes(role) ? "" : "none";
+
+    });
+
+}
+
+window.addEventListener("DOMContentLoaded",()=>{
+
+    updateTopProfile();
+
+    applyPermissions();
 
 });
