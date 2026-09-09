@@ -1,45 +1,56 @@
 // =======================================
-// E3U Command Center
-// Router v1.0
+// E3U Router v2
 // =======================================
 
-const PAGES = {
+const ROUTES = {
   home: "pages/home.html",
-  profile: "pages/profile.html",
+  roster: "pages/roster.html",
   truck: "pages/truck.html",
   bank: "pages/bank.html",
   bg: "pages/bg.html",
   forum: "pages/forum.html",
+  profile: "pages/profile.html",
   settings: "pages/settings.html",
   admin: "pages/admin.html"
 };
 
-let currentPage = "home";
+async function openPage(page){
 
-async function loadPage(page){
+    if(!ROUTES[page]) return;
 
-  if(!PAGES[page]) return;
+    const res = await fetch(ROUTES[page]);
+    const html = await res.text();
 
-  currentPage = page;
+    document.getElementById("app").innerHTML = html;
 
-  const response = await fetch(PAGES[page]);
+    document.querySelectorAll(".menu-item")
+      .forEach(x=>x.classList.remove("active"));
 
-  const html = await response.text();
+    const btn=document.querySelector(`[data-page="${page}"]`);
 
-  const app = document.getElementById("app");
+    if(btn) btn.classList.add("active");
 
-  if(app){
-    app.innerHTML = html;
-  }
-
-  localStorage.setItem("e3u-page", page);
+    localStorage.setItem("e3u-last-page",page);
 
 }
 
-document.addEventListener("DOMContentLoaded",()=>{
+window.openPage=openPage;
 
-  const lastPage = localStorage.getItem("e3u-page") || "home";
+window.addEventListener("DOMContentLoaded",()=>{
 
-  loadPage(lastPage);
+    document.querySelectorAll("[data-page]")
+      .forEach(btn=>{
+
+        btn.onclick=(e)=>{
+
+          e.preventDefault();
+
+          openPage(btn.dataset.page);
+
+        };
+
+      });
+
+    openPage(localStorage.getItem("e3u-last-page")||"home");
 
 });
