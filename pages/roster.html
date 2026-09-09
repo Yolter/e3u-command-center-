@@ -3,30 +3,49 @@
     <p>Все участники семьи.</p>
 </section>
 
-<div class="roster-grid">
+<div id="rosterList" class="roster-grid"></div>
 
-    <div class="member-card">
-        <div class="member-avatar">👤</div>
-        <div class="member-name">Максим</div>
-        <div class="member-tag">E3U • LR5</div>
-        <div class="member-status online">● В сети</div>
-        <div class="member-warrior">⚔ Воин</div>
-    </div>
+<script>
+async function loadRoster(){
 
-    <div class="member-card">
-        <div class="member-avatar">💰</div>
-        <div class="member-name">Дима</div>
-        <div class="member-tag">E3U • R4</div>
-        <div class="member-status offline">● Не в сети</div>
-        <div class="member-warrior">🏦 Банк</div>
-    </div>
+    const response = await fetch("data/players.json");
+    const players = await response.json();
 
-    <div class="member-card">
-        <div class="member-avatar">🚚</div>
-        <div class="member-name">Alex</div>
-        <div class="member-tag">E3U • R3</div>
-        <div class="member-status online">● В сети</div>
-        <div class="member-warrior">🚚 Truck</div>
-    </div>
+    const roster = document.getElementById("rosterList");
 
-</div>
+    roster.innerHTML = "";
+
+    players.forEach(player=>{
+
+        roster.innerHTML += `
+        <div class="member-card">
+
+            <div class="member-avatar">
+                ${player.avatar ? `<img src="${player.avatar}">` : "👤"}
+            </div>
+
+            <div class="member-name">${player.nickname}</div>
+
+            <div class="member-tag">
+                E3U • ${player.rank}
+            </div>
+
+            <div class="member-status ${player.online ? "online":"offline"}">
+                ● ${player.online ? "В сети":"Не в сети"}
+            </div>
+
+            <div class="member-warrior">
+                ${player.warrior ? "⚔ Воин":"🛡 Участник"}
+            </div>
+
+            <small>${player.id}</small>
+
+        </div>
+        `;
+
+    });
+
+}
+
+loadRoster();
+</script>
