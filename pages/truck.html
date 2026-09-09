@@ -1,1 +1,111 @@
+<section class="page-header">
+    <h2>🚚 Truck Control</h2>
+    <p>Назначение состава на завтра.</p>
+</section>
 
+<div class="truck-layout">
+
+    <div class="card">
+
+        <h3>➕ Назначить игрока</h3>
+
+        <input id="truckName" placeholder="Игровой ник">
+
+        <input id="truckTime" type="time" value="19:00">
+
+        <button class="btn" onclick="addTruck()">Назначить</button>
+
+    </div>
+
+    <div class="card">
+
+        <h3>📋 Завтрашний состав</h3>
+
+        <div id="truckList"></div>
+
+    </div>
+
+</div>
+
+<script>
+const TRUCK_KEY="e3u_trucks";
+
+function getTrucks(){
+    return JSON.parse(localStorage.getItem(TRUCK_KEY)||"[]");
+}
+
+function saveTrucks(data){
+    localStorage.setItem(TRUCK_KEY,JSON.stringify(data));
+}
+
+function renderTrucks(){
+
+    const list=document.getElementById("truckList");
+
+    list.innerHTML="";
+
+    const trucks=getTrucks();
+
+    if(trucks.length===0){
+
+        list.innerHTML="<p>Пока никого не назначили.</p>";
+
+        return;
+
+    }
+
+    trucks.forEach((player,index)=>{
+
+        list.innerHTML+=`
+        <div class="truck-row">
+
+            <div>
+                <b>${player.name}</b><br>
+                <small>🕒 ${player.time}</small>
+            </div>
+
+            <button onclick="removeTruck(${index})">❌</button>
+
+        </div>`;
+    });
+
+}
+
+function addTruck(){
+
+    const name=document.getElementById("truckName").value.trim();
+
+    const time=document.getElementById("truckTime").value;
+
+    if(!name) return;
+
+    const trucks=getTrucks();
+
+    trucks.push({
+        name,
+        time,
+        confirmed:false
+    });
+
+    saveTrucks(trucks);
+
+    document.getElementById("truckName").value="";
+
+    renderTrucks();
+
+}
+
+function removeTruck(index){
+
+    const trucks=getTrucks();
+
+    trucks.splice(index,1);
+
+    saveTrucks(trucks);
+
+    renderTrucks();
+
+}
+
+renderTrucks();
+</script>
