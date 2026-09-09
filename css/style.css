@@ -1,302 +1,298 @@
 /* ==========================
-   E3U Command Center v2
+   E3U Command Center v3
    The Grand Mafia Style
 ========================== */
 
+:root{
+    --bg:#090909;
+    --panel:#141414;
+    --card:#1d1d1d;
+    --gold:#D4AF37;
+    --gold-light:#F2D675;
+    --text:#F5F5F5;
+    --muted:#9B9B9B;
+    --green:#32D74B;
+    --red:#FF453A;
+    --blue:#3A86FF;
+    --radius:18px;
+}
+
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 body{
-
-background:#040404;
-color:white;
-min-height:100vh;
-overflow-x:hidden;
-position:relative;
-
+    font-family:Inter,Arial,sans-serif;
+    background:linear-gradient(180deg,#050505,#111111);
+    color:var(--text);
+    min-height:100vh;
 }
 
-.background-glow{
+/* ===== Scroll ===== */
 
-position:fixed;
-inset:0;
-background:
-radial-gradient(circle at top,#D4AF37 0%,transparent 25%),
-radial-gradient(circle at bottom,#6e5208 0%,transparent 35%);
-opacity:.15;
-pointer-events:none;
-z-index:-1;
-
+::-webkit-scrollbar{
+    width:8px;
 }
 
-.container{
+::-webkit-scrollbar-thumb{
+    background:var(--gold);
+    border-radius:20px;
+}
 
-max-width:430px;
-margin:auto;
-padding:40px 20px;
+/* ===== Top Bar ===== */
 
+.topbar{
+    height:70px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 22px;
+    border-bottom:1px solid rgba(212,175,55,.2);
+    backdrop-filter:blur(12px);
+    position:sticky;
+    top:0;
+    background:rgba(8,8,8,.9);
+    z-index:100;
 }
 
 .logo{
-
-text-align:center;
-margin-bottom:30px;
-animation:fadeDown .8s ease;
-
+    display:flex;
+    align-items:center;
+    gap:12px;
 }
 
-.logo-img{
-
-width:90px;
-margin-bottom:10px;
-filter:drop-shadow(0 0 15px rgba(212,175,55,.6));
-
+.logo-circle{
+    width:46px;
+    height:46px;
+    border-radius:50%;
+    border:2px solid var(--gold);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--gold);
+    font-weight:700;
 }
 
 .logo h1{
-
-font-size:42px;
-color:#D4AF37;
-letter-spacing:4px;
-
+    font-size:22px;
+    color:var(--gold);
 }
 
 .logo p{
-
-color:#aaa;
-margin-top:5px;
-
+    font-size:12px;
+    color:var(--muted);
 }
 
-.badge{
-
-display:inline-block;
-margin-top:12px;
-padding:7px 16px;
-border:1px solid #8b6b00;
-border-radius:30px;
-color:#D4AF37;
-font-size:13px;
-background:rgba(212,175,55,.08);
-
+.icons{
+    display:flex;
+    gap:18px;
+    font-size:22px;
 }
 
-.panel{
+/* ===== Layout ===== */
 
-background:rgba(18,18,18,.88);
-border:1px solid rgba(212,175,55,.25);
-border-radius:24px;
-padding:28px;
-backdrop-filter:blur(12px);
-box-shadow:
-0 0 35px rgba(212,175,55,.08),
-inset 0 0 20px rgba(255,215,0,.03);
-animation:fadeUp .9s ease;
-
+.container{
+    display:flex;
+    min-height:calc(100vh - 70px);
 }
 
-.title{
+/* ===== Sidebar ===== */
 
-text-align:center;
-margin-bottom:25px;
-
+.sidebar{
+    width:240px;
+    background:rgba(15,15,15,.95);
+    border-right:1px solid rgba(212,175,55,.15);
+    padding:24px 16px;
 }
 
-.title h2{
-
-color:#D4AF37;
-margin-bottom:8px;
-
+.sidebar h3{
+    color:var(--gold);
+    margin-bottom:18px;
+    font-size:14px;
+    letter-spacing:1px;
 }
 
-.title p{
-
-color:#aaa;
-font-size:14px;
-
+.menu-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:14px;
+    border-radius:14px;
+    color:var(--text);
+    text-decoration:none;
+    margin-bottom:8px;
+    transition:.25s;
 }
+
+.menu-item:hover{
+    background:rgba(212,175,55,.12);
+    transform:translateX(5px);
+}
+
+.menu-item.active{
+    background:rgba(212,175,55,.18);
+    border:1px solid rgba(212,175,55,.35);
+}
+
+/* ===== Main ===== */
+
+.main{
+    flex:1;
+    padding:28px;
+}
+
+.hero{
+    background:linear-gradient(145deg,#181818,#0e0e0e);
+    border:1px solid rgba(212,175,55,.25);
+    border-radius:22px;
+    padding:28px;
+    margin-bottom:24px;
+    box-shadow:0 0 30px rgba(212,175,55,.08);
+}
+
+.hero h2{
+    color:var(--gold);
+    font-size:34px;
+}
+
+.hero p{
+    color:var(--muted);
+    margin-top:8px;
+}
+
+/* ===== Cards ===== */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:linear-gradient(180deg,#1a1a1a,#101010);
+    border:1px solid rgba(212,175,55,.18);
+    border-radius:var(--radius);
+    padding:20px;
+    transition:.25s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+    border-color:rgba(212,175,55,.5);
+    box-shadow:0 10px 25px rgba(212,175,55,.1);
+}
+
+.card h3{
+    color:var(--gold);
+    margin-bottom:12px;
+}
+
+.card p{
+    color:var(--muted);
+}
+
+/* ===== Profile ===== */
+
+.profile-card{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.avatar{
+    width:72px;
+    height:72px;
+    border-radius:50%;
+    border:2px solid var(--gold);
+    background:#222;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:26px;
+}
+
+.name{
+    font-size:24px;
+    font-weight:700;
+}
+
+.subtitle{
+    color:var(--gold);
+}
+
+/* ===== Status ===== */
+
+.status-online{
+    color:var(--green);
+}
+
+.status-offline{
+    color:var(--red);
+}
+
+/* ===== Buttons ===== */
 
 .btn{
-
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:17px 18px;
-margin-bottom:14px;
-text-decoration:none;
-color:white;
-font-weight:600;
-border-radius:16px;
-background:linear-gradient(90deg,#c69c21,#D4AF37);
-transition:.25s;
-box-shadow:0 6px 18px rgba(212,175,55,.2);
-
+    background:linear-gradient(180deg,var(--gold),#b88b12);
+    color:#111;
+    border:none;
+    padding:12px 18px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:700;
+    transition:.25s;
 }
 
 .btn:hover{
-
-transform:translateY(-3px) scale(1.02);
-box-shadow:0 0 30px rgba(212,175,55,.4);
-
+    transform:scale(1.03);
 }
 
-.status{
+/* ===== Floating Command Button ===== */
 
-margin-top:25px;
-padding:18px;
-background:#111;
-border-radius:18px;
-border:1px solid rgba(212,175,55,.18);
-
-}
-
-.status h3{
-
-color:#D4AF37;
-margin-bottom:12px;
-
-}
-
-.status li{
-
-list-style:none;
-padding:7px 0;
-color:#ddd;
-
-}
-
-.footer{
-
-margin-top:30px;
-text-align:center;
-font-size:13px;
-color:#777;
-
-}
-
-/* Музыка */
-
-.music-btn{
-
-position:fixed;
-top:20px;
-right:20px;
-width:52px;
-height:52px;
-display:flex;
-justify-content:center;
-align-items:center;
-border-radius:50%;
-background:rgba(212,175,55,.12);
-border:1px solid rgba(212,175,55,.35);
-cursor:pointer;
-font-size:22px;
-backdrop-filter:blur(8px);
-transition:.25s;
-z-index:999;
-
-}
-
-.music-btn:hover{
-
-transform:scale(1.1) rotate(8deg);
-background:rgba(212,175,55,.22);
-
-}
-
-/* Анимации */
-
-@keyframes fadeDown{
-
-from{
-opacity:0;
-transform:translateY(-25px);
-}
-
-to{
-opacity:1;
-transform:translateY(0);
-}
-
-}
-
-@keyframes fadeUp{
-
-from{
-opacity:0;
-transform:translateY(35px);
-}
-
-to{
-opacity:1;
-transform:translateY(0);
-}
-
-}
-
-@media(max-width:430px){
-
-.container{
-
-padding:25px 15px;
-
-}
-
-.logo h1{
-
-font-size:36px;
-
-}
-
-}
-/* ===== Hero Upgrade ===== */
-
-.logo-frame{
-    width:120px;
-    height:120px;
-    margin:auto;
+.command-btn{
+    position:fixed;
+    right:24px;
+    bottom:24px;
+    width:64px;
+    height:64px;
     border-radius:50%;
+    background:linear-gradient(180deg,var(--gold),#a97800);
     display:flex;
     justify-content:center;
     align-items:center;
-    background:radial-gradient(circle,#3d2b00,#0b0b0b);
-    border:2px solid rgba(212,175,55,.45);
-    box-shadow:
-        0 0 35px rgba(212,175,55,.35),
-        inset 0 0 25px rgba(255,215,0,.08);
+    font-size:28px;
+    box-shadow:0 0 30px rgba(212,175,55,.4);
+    cursor:pointer;
 }
 
-.hero-line{
-    width:140px;
-    height:2px;
-    margin:18px auto;
-    background:linear-gradient(to right,
-        transparent,
-        #D4AF37,
-        transparent);
+/* ===== Mobile ===== */
+
+@media(max-width:900px){
+
+.sidebar{
+    position:fixed;
+    left:-260px;
+    height:100%;
+    transition:.3s;
+    z-index:200;
 }
 
-.hero-text{
-    display:flex;
-    flex-direction:column;
-    gap:6px;
-    font-size:13px;
-    color:#cfcfcf;
+.sidebar.open{
+    left:0;
 }
 
-.hero-text span{
-    animation:pulseText 3s infinite;
+.main{
+    padding:18px;
 }
 
-@keyframes pulseText{
-    0%,100%{
-        opacity:.75;
-    }
-    50%{
-        opacity:1;
-    }
+.hero h2{
+    font-size:28px;
+}
+
+.grid{
+    grid-template-columns:1fr;
+}
+
 }
