@@ -623,3 +623,40 @@ background:#1b1b1b;
 padding:8px;
 border-radius:10px;
 }
+/* ===== Admin HQ ===== */
+
+.admin-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:18px;
+}
+
+.admin-card{
+background:linear-gradient(180deg,#141414,#0d0d0d);
+border:1px solid rgba(212,175,55,.28);
+border-radius:20px;
+padding:24px;
+transition:.25s;
+cursor:pointer;
+}
+
+.admin-card:hover{
+transform:translateY(-5px);
+border-color:#D4AF37;
+box-shadow:0 0 25px rgba(212,175,55,.15);
+}
+
+.admin-icon{
+font-size:36px;
+margin-bottom:12px;
+}
+
+.admin-card h3{
+color:#D4AF37;
+margin-bottom:8px;
+}
+
+.admin-card p{
+color:#999;
+font-size:14px;
+}
