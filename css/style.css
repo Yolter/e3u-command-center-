@@ -844,4 +844,62 @@ cursor:pointer;
 grid-template-columns:1fr;
 }
 
+}/* ===== Bank ===== */
+
+.bank-layout{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:20px;
+margin-bottom:20px;
 }
+
+.bank-stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+text-align:center;
+margin-top:15px;
+}
+
+.bank-stats div{
+background:#181818;
+padding:14px;
+border-radius:12px;
+border:1px solid rgba(212,175,55,.15);
+}
+
+.bank-player{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:14px;
+margin:10px 0;
+background:#181818;
+border-radius:12px;
+border:1px solid rgba(212,175,55,.15);
+}
+
+.bank-buttons{
+display:flex;
+gap:8px;
+}
+
+.bank-buttons button{
+width:42px;
+height:42px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+background:#2a2a2a;
+font-size:18px;
+transition:.2s;
+}
+
+.bank-buttons button.active{
+border:2px solid #D4AF37;
+transform:scale(1.05);
+}
+
+.green.active{background:#1f7a3d;}
+.yellow.active{background:#8a6a12;}
+.red.active{background:#8f1a1a;}
