@@ -1,32 +1,57 @@
-[
-  {
-    "id": "player",
-    "name": "Игрок",
-    "level": 1,
-    "pages": ["home", "profile"]
+{
+  "owner": {
+    "id": "E3U-001",
+    "nickname": "Максим",
+    "rank": "R5",
+    "department": "Owner"
   },
-  {
-    "id": "warrior",
-    "name": "Воин",
-    "level": 2,
-    "pages": ["home", "profile", "bg"]
+
+  "departments": {
+    "bank": "Банк",
+    "logistics": "Truck",
+    "military": "Battle Ground",
+    "activity": "Онлайн",
+    "recruitment": "Набор",
+    "communications": "Новости"
   },
-  {
-    "id": "r4",
-    "name": "R4",
-    "level": 4,
-    "pages": ["home", "profile", "truck", "bank", "forum", "bg"]
-  },
-  {
-    "id": "r5",
-    "name": "R5",
-    "level": 5,
-    "pages": ["home", "profile", "truck", "bank", "forum", "bg"]
-  },
-  {
-    "id": "lr5",
-    "name": "LR5",
-    "level": 6,
-    "pages": ["*"]
+
+  "permissions": {
+
+    "R5":[
+      "all"
+    ],
+
+    "R4_Bank":[
+      "bank",
+      "roster_view"
+    ],
+
+    "R4_Logistics":[
+      "truck",
+      "roster_view"
+    ],
+
+    "R4_Military":[
+      "bg",
+      "mk",
+      "roster_view"
+    ],
+
+    "R3":[
+      "player"
+    ],
+
+    "R2":[
+      "player"
+    ],
+
+    "R1":[
+      "player"
+    ],
+
+    "Recruit":[
+      "login"
+    ]
+
   }
-]
+}
