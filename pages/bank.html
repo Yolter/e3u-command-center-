@@ -1,1 +1,131 @@
 
+<section class="page-header">
+    <h2>💰 Банк E3U</h2>
+    <p>Учёт сдачи ресурсов.</p>
+</section>
+
+<div class="bank-layout">
+
+    <div class="card">
+
+        <h3>📸 Отчёт банка</h3>
+
+        <input id="bankImage" type="file" accept="image/*">
+
+        <p>Последний скрин появится здесь позже.</p>
+
+    </div>
+
+    <div class="card">
+
+        <h3>📊 Статистика</h3>
+
+        <div class="bank-stats">
+            <div><b id="doneCount">0</b><br><small>Сдали</small></div>
+            <div><b id="warnCount">0</b><br><small>Предупредили</small></div>
+            <div><b id="missCount">0</b><br><small>Не сдали</small></div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="card">
+
+    <h3>👥 Игроки</h3>
+
+    <div id="bankPlayers"></div>
+
+</div>
+
+<script>
+const BANK_KEY="e3u_bank_status";
+
+async function loadPlayers(){
+
+    const saved=localStorage.getItem("e3u_players");
+
+    if(saved) return JSON.parse(saved);
+
+    const res=await fetch("data/players.json");
+
+    return await res.json();
+
+}
+
+function getBankStatus(){
+
+    return JSON.parse(localStorage.getItem(BANK_KEY)||"{}");
+
+}
+
+function saveBankStatus(data){
+
+    localStorage.setItem(BANK_KEY,JSON.stringify(data));
+
+}
+
+async function renderBank(){
+
+    const players=await loadPlayers();
+
+    const status=getBankStatus();
+
+    const container=document.getElementById("bankPlayers");
+
+    container.innerHTML="";
+
+    let done=0,warn=0,miss=0;
+
+    players.forEach(player=>{
+
+        const state=status[player.id]||"none";
+
+        if(state==="done") done++;
+        if(state==="warn") warn++;
+        if(state==="miss") miss++;
+
+        container.innerHTML+=`
+        <div class="bank-player">
+
+            <div>
+                <b>${player.nickname}</b><br>
+                <small>${player.rank}</small>
+            </div>
+
+            <div class="bank-buttons">
+
+                <button class="${state==="done"?"active green":""}"
+                onclick="setStatus('${player.id}','done')">🟢</button>
+
+                <button class="${state==="warn"?"active yellow":""}"
+                onclick="setStatus('${player.id}','warn')">🟡</button>
+
+                <button class="${state==="miss"?"active red":""}"
+                onclick="setStatus('${player.id}','miss')">🔴</button>
+
+            </div>
+
+        </div>`;
+    });
+
+    document.getElementById("doneCount").textContent=done;
+    document.getElementById("warnCount").textContent=warn;
+    document.getElementById("missCount").textContent=miss;
+
+}
+
+window.setStatus=function(id,state){
+
+    const status=getBankStatus();
+
+    status[id]=state;
+
+    saveBankStatus(status);
+
+    renderBank();
+
+}
+
+renderBank();
+</script>
