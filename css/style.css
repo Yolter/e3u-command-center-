@@ -553,3 +553,73 @@ border-radius:12px;
 font-weight:bold;
 cursor:pointer;
 }
+/* ===== Roster ===== */
+
+.page-header{
+margin-bottom:25px;
+}
+
+.roster-grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+gap:18px;
+}
+
+.member-card{
+background:#111;
+border:1px solid rgba(212,175,55,.35);
+border-radius:20px;
+padding:20px;
+text-align:center;
+transition:.25s;
+}
+
+.member-card:hover{
+transform:translateY(-4px);
+border-color:#D4AF37;
+box-shadow:0 0 20px rgba(212,175,55,.15);
+}
+
+.member-avatar{
+width:70px;
+height:70px;
+margin:auto;
+border:2px solid #D4AF37;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+margin-bottom:15px;
+}
+
+.member-name{
+font-size:20px;
+font-weight:bold;
+color:white;
+}
+
+.member-tag{
+color:#D4AF37;
+margin:6px 0;
+}
+
+.member-status{
+font-size:14px;
+margin:8px 0;
+}
+
+.member-status.online{
+color:#00ff6a;
+}
+
+.member-status.offline{
+color:#888;
+}
+
+.member-warrior{
+margin-top:10px;
+background:#1b1b1b;
+padding:8px;
+border-radius:10px;
+}
