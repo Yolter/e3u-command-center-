@@ -1,53 +1,85 @@
-// ==============================
-// E3U Command Center v2
-// The Grand Mafia
-// ==============================
+const languages = ["ru","en","es","ua"];
+let currentLang = localStorage.getItem("e3u-lang") || "ru";
 
-const music = document.getElementById("bgMusic");
+const text = {
+  ru:{
+    welcome:"Добро пожаловать.",
+    subtitle:"Операционный центр семьи E3U.",
+    home:"🏠 Главная",
+    operations:"📅 Операции",
+    roster:"👥 Состав",
+    forum:"💬 Форум",
+    settings:"⚙ Настройки"
+  },
 
-if (music) {
+  en:{
+    welcome:"Welcome.",
+    subtitle:"E3U Operational Center.",
+    home:"🏠 Home",
+    operations:"📅 Operations",
+    roster:"👥 Members",
+    forum:"💬 Forum",
+    settings:"⚙ Settings"
+  },
 
-    music.volume = 0.35;
+  es:{
+    welcome:"Bienvenido.",
+    subtitle:"Centro operativo de E3U.",
+    home:"🏠 Inicio",
+    operations:"📅 Operaciones",
+    roster:"👥 Miembros",
+    forum:"💬 Foro",
+    settings:"⚙ Ajustes"
+  },
 
-    const saved = localStorage.getItem("e3u_music");
+  ua:{
+    welcome:"Ласкаво просимо.",
+    subtitle:"Операційний центр E3U.",
+    home:"🏠 Головна",
+    operations:"📅 Операції",
+    roster:"👥 Склад",
+    forum:"💬 Форум",
+    settings:"⚙ Налаштування"
+  }
+};
 
-    if (saved === "on") {
+function applyLanguage(lang){
 
-        music.play().catch(()=>{});
+  currentLang=lang;
 
-    }
+  localStorage.setItem("e3u-lang",lang);
 
+  document.documentElement.lang=lang;
+
+  const t=text[lang];
+
+  document.getElementById("welcome").textContent=t.welcome;
+  document.getElementById("subtitle").textContent=t.subtitle;
+
+  document.getElementById("menu-home").textContent=t.home;
+  document.getElementById("menu-operations").textContent=t.operations;
+  document.getElementById("menu-roster").textContent=t.roster;
+  document.getElementById("menu-forum").textContent=t.forum;
+  document.getElementById("menu-settings").textContent=t.settings;
+
+  document.getElementById("langBtn").textContent=
+    lang==="ru"?"🇷🇺":
+    lang==="en"?"🇬🇧":
+    lang==="es"?"🇪🇸":"🇺🇦";
 }
 
-function toggleMusic(){
+document.addEventListener("DOMContentLoaded",()=>{
 
-    if(!music) return;
+  applyLanguage(currentLang);
 
-    if(music.paused){
+  document.getElementById("langBtn").onclick=()=>{
 
-        music.play();
-        localStorage.setItem("e3u_music","on");
+    let i=languages.indexOf(currentLang);
 
-    }else{
+    i=(i+1)%languages.length;
 
-        music.pause();
-        localStorage.setItem("e3u_music","off");
+    applyLanguage(languages[i]);
 
-    }
-
-}
-
-// Плавное появление страниц
-
-window.addEventListener("load",()=>{
-
-    document.body.style.opacity="0";
-
-    setTimeout(()=>{
-
-        document.body.style.transition="opacity .4s";
-        document.body.style.opacity="1";
-
-    },50);
+  };
 
 });
