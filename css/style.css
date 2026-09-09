@@ -903,3 +903,40 @@ transform:scale(1.05);
 .green.active{background:#1f7a3d;}
 .yellow.active{background:#8a6a12;}
 .red.active{background:#8f1a1a;}
+/* ===== Roadmap ===== */
+
+.roadmap-board{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
+
+.roadmap-column{
+background:#111;
+border:1px solid rgba(212,175,55,.25);
+border-radius:18px;
+padding:18px;
+}
+
+.roadmap-column h3{
+color:#D4AF37;
+margin-bottom:15px;
+}
+
+.task{
+background:#1a1a1a;
+border:1px solid rgba(255,255,255,.08);
+border-radius:12px;
+padding:12px;
+margin-bottom:10px;
+transition:.2s;
+}
+
+.task.active{
+border-color:#D4AF37;
+}
+
+.task.done{
+background:#15351d;
+border-color:#2ecc71;
+}
