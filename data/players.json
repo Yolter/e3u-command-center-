@@ -1,1 +1,29 @@
-[]
+[
+  {
+    "id": "E3U-001",
+    "nickname": "Максим",
+    "rank": "LR5",
+    "role": "Лидер",
+    "warrior": true,
+    "online": true,
+    "avatar": ""
+  },
+  {
+    "id": "E3U-002",
+    "nickname": "Дима",
+    "rank": "R4",
+    "role": "Банк",
+    "warrior": false,
+    "online": false,
+    "avatar": ""
+  },
+  {
+    "id": "E3U-003",
+    "nickname": "Alex",
+    "rank": "R3",
+    "role": "Truck",
+    "warrior": true,
+    "online": true,
+    "avatar": ""
+  }
+]
