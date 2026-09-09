@@ -1,1 +1,32 @@
-
+[
+  {
+    "id": "player",
+    "name": "Игрок",
+    "level": 1,
+    "pages": ["home", "profile"]
+  },
+  {
+    "id": "warrior",
+    "name": "Воин",
+    "level": 2,
+    "pages": ["home", "profile", "bg"]
+  },
+  {
+    "id": "r4",
+    "name": "R4",
+    "level": 4,
+    "pages": ["home", "profile", "truck", "bank", "forum", "bg"]
+  },
+  {
+    "id": "r5",
+    "name": "R5",
+    "level": 5,
+    "pages": ["home", "profile", "truck", "bank", "forum", "bg"]
+  },
+  {
+    "id": "lr5",
+    "name": "LR5",
+    "level": 6,
+    "pages": ["*"]
+  }
+]
